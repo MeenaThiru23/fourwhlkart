@@ -1,0 +1,162 @@
+[
+  {
+    "car-id": "001",
+    "car-img": "https://images.pexels.com/photos/34043220/pexels-photo-34043220.jpeg",
+    "car-title": "Porsche 911 Carrera S",
+    "car-price": 131000,
+    "car-year": 2024,
+    "car-milage": "1,200 mi"
+  },
+  {
+    "car-id": "002",
+    "car-img": "https://images.pexels.com/photos/33940050/pexels-photo-33940050.jpeg",
+    "car-title": "BMW M4 Competition",
+    "car-price": 82500,
+    "car-year": 2023,
+    "car-milage": "8,450 mi"
+  },
+  {
+    "car-id": "003",
+    "car-img": "https://images.pexels.com/photos/14674139/pexels-photo-14674139.jpeg",
+    "car-title": "Tesla Model S Plaid",
+    "car-price": 89990,
+    "car-year": 2024,
+    "car-milage": "500 mi"
+  },
+  {
+    "car-id": "004",
+    "car-img": "https://images.pexels.com/photos/29615591/pexels-photo-29615591.jpeg",
+    "car-title": "Ford Mustang GT",
+    "car-price": 45000,
+    "car-year": 2022,
+    "car-milage": "15,200 mi"
+  },
+  {
+    "car-id": "005",
+    "car-img": "images.unsplash.com",
+    "car-title": "Audi RS7 Sportback",
+    "car-price": 127800,
+    "car-year": 2023,
+    "car-milage": "3,100 mi"
+  },
+  {
+    "car-id": "006",
+    "car-img": "images.unsplash.com",
+    "car-title": "Lamborghini Huracán",
+    "car-price": 248000,
+    "car-year": 2021,
+    "car-milage": "6,700 mi"
+  },
+  {
+    "car-id": "007",
+    "car-img": "images.unsplash.com",
+    "car-title": "Range Rover Sport",
+    "car-price": 95000,
+    "car-year": 2024,
+    "car-milage": "0 mi"
+  },
+  {
+    "car-id": "008",
+    "car-img": "images.unsplash.com",
+    "car-title": "Mercedes-Benz G-Wagon",
+    "car-price": 179000,
+    "car-year": 2023,
+    "car-milage": "4,200 mi"
+  },
+  {
+    "car-id": "009",
+    "car-img": "images.unsplash.com",
+    "car-title": "Jeep Wrangler Rubicon",
+    "car-price": 58200,
+    "car-year": 2024,
+    "car-milage": "2,150 mi"
+  },
+  {
+    "car-id": "010",
+    "car-img": "images.unsplash.com",
+    "car-title": "Chevrolet Corvette Z06",
+    "car-price": 112000,
+    "car-year": 2023,
+    "car-milage": "1,100 mi"
+  },
+  {
+    "car-id": "011",
+    "car-img": "images.unsplash.com",
+    "car-title": "Nissan GT-R Nismo",
+    "car-price": 210000,
+    "car-year": 2022,
+    "car-milage": "9,800 mi"
+  },
+  {
+    "car-id": "012",
+    "car-img": "images.unsplash.com",
+    "car-title": "Toyota Land Cruiser",
+    "car-price": 85000,
+    "car-year": 2024,
+    "car-milage": "0 mi"
+  },
+  {
+    "car-id": "013",
+    "car-img": "images.unsplash.com",
+    "car-title": "Aston Martin Vantage",
+    "car-price": 165000,
+    "car-year": 2023,
+    "car-milage": "2,400 mi"
+  },
+  {
+    "car-id": "014",
+    "car-img": "images.unsplash.com",
+    "car-title": "Volkswagen Golf R",
+    "car-price": 46000,
+    "car-year": 2024,
+    "car-milage": "150 mi"
+  },
+  {
+    "car-id": "015",
+    "car-img": "images.unsplash.com",
+    "car-title": "Ferrari F8 Tributo",
+    "car-price": 320000,
+    "car-year": 2022,
+    "car-milage": "3,500 mi"
+  },
+  {
+    "car-id": "016",
+    "car-img": "images.unsplash.com",
+    "car-title": "Mazda MX-5 Miata",
+    "car-price": 28000,
+    "car-year": 2021,
+    "car-milage": "21,000 mi"
+  },
+  {
+    "car-id": "017",
+    "car-img": "images.unsplash.com",
+    "car-title": "Jaguar F-Type",
+    "car-price": 77000,
+    "car-year": 2023,
+    "car-milage": "5,600 mi"
+  },
+  {
+    "car-id": "018",
+    "car-img": "images.unsplash.com",
+    "car-title": "Dodge Challenger Hellcat",
+    "car-price": 71000,
+    "car-year": 2022,
+    "car-milage": "11,000 mi"
+  },
+  {
+    "car-id": "019",
+    "car-img": "images.unsplash.com",
+    "car-title": "Subaru WRX STI",
+    "car-price": 39500,
+    "car-year": 2021,
+    "car-milage": "34,000 mi"
+  },
+  {
+    "car-id": "020",
+    "car-img": "images.unsplash.com",
+    "car-title": "Lexus LC 500",
+    "car-price": 99000,
+    "car-year": 2024,
+    "car-milage": "100 mi"
+  }
+]
