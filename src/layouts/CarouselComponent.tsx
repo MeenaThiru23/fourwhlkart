@@ -10,6 +10,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CarCard from "./CarCard";
 import carsData from "@/utils/Cars.json";
+import { useAppSelector } from "@/store/hooks";
 
 // 1. TypeScript Interfaces
 interface Car {
@@ -25,12 +26,19 @@ interface DataCarouselProps {
   cars: Car[];
 }
 
+
+
 // 2. Reusable Carousel Component
 const DataCarousel = ({ cars }: DataCarouselProps) => {
+  const plugin = React.useRef(
+    Autoplay({ delay: 2000, stopOnInteraction: false, stopOnMouseEnter: true })
+  )
   return (
     <Carousel
       opts={{ align: "start", loop: true }}
-      plugins={[Autoplay({ delay: 2000, stopOnMouseEnter: true })]}
+      plugins={[plugin.current]} // Use the ref here
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
       className="w-full"
     >
       <CarouselContent className="-ml-2 md:-ml-4">
@@ -55,7 +63,10 @@ const DataCarousel = ({ cars }: DataCarouselProps) => {
 export function CarouselComponent() {
   // Simulating data split for the two tabs
   const youMightLike = carsData.slice(0, 8) as Car[];
-  const recentlyViewed = carsData.slice(8, 16) as Car[];
+const { cars, recentlyViewedIds } = useAppSelector((state) => state.cars);
+const recentlyViewedCars = recentlyViewedIds
+  .map(id => cars.find(c => c["car-id"] === id))
+  .filter((car): car is Car => !!car);
 
   return (
     <section className="w-full bg-gradient-to-r from-violet-950 to-violet-180 border-y border-primary/10 py-10 my-8">
@@ -66,7 +77,7 @@ export function CarouselComponent() {
             <h2 className="text-3xl font-bold tracking-tight text-white">
               Vehicle Recommendations
             </h2>
-            <TabsList className="grid w-full md:w-auto grid-cols-2 bg-background/50 border">
+            <TabsList className="grid w-full md:w-auto grid-cols-2 bg-violet-200 border">
               <TabsTrigger value="might-like">You might like</TabsTrigger>
               <TabsTrigger value="recently-viewed">Recently Viewed</TabsTrigger>
             </TabsList>
@@ -78,9 +89,15 @@ export function CarouselComponent() {
           </TabsContent>
 
           {/* Carousel Content for Tab 2 */}
-          <TabsContent value="recently-viewed" className="mt-0 outline-none">
-            <DataCarousel cars={recentlyViewed} />
-          </TabsContent>
+          <TabsContent value="recently-viewed">
+  {recentlyViewedCars.length > 0 ? (
+    <DataCarousel cars={recentlyViewedCars} />
+  ) : (
+    <div className="py-10 text-center text-white/50">
+       No cars viewed yet.
+    </div>
+  )}
+</TabsContent>
         </Tabs>
       </div>
     </section>

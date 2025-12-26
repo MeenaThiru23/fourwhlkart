@@ -1,51 +1,44 @@
-import { useEffect, useState } from "react";
-import carsData from "@/utils/Cars.json";
-import CarCard from "@/layouts/CarCard";
+import CarCard from "../layouts/CarCard";
+import useCars from "@/hooks/useCars";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
+import { setQuery } from "../store/reducer/CarsReducer";
+import { Fragment } from "react/jsx-runtime";
 
-const CarsPage = () => {            
-//     const [cars, setCars] = useState([]);
-//     const [loading, setLoading] = useState(true);   
-//     useEffect(() => {
-//         fetch('/cars.json') 
-//         .then(response => {
-//             if (!response.ok) throw new Error("Failed to fetch");
-//             return response.json();
-//         })
-//         .then(data => {
-//             setCars(data);
-//             setLoading(false);
-//         })
-//         .catch(err => console.error(err));
-// }, []);    
-//     if (loading) {
-//         return <div>Loading...</div>;
-//     }
-    const selectedCar = carsData.find(car => car["car-id"] === "014");
-    return (
-        // <div>
-        //     <h1>Car List</h1>
-        //      {selectedCar && <CarCard car={selectedCar} />}
-        //             </div>
-         <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-8">Our Inventory</h1>
-      
-      {/* 
-         The Grid:
-         grid-cols-1: 1 card on mobile
-         md:grid-cols-2: 2 cards on tablet
-         lg:grid-cols-3: 3 cards on desktop
-         xl:grid-cols-4: 4 cards on large screens
-      */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {carsData.map((individualCar) => (
-          <CarCard 
-            key={individualCar["car-id"]} 
-            car={individualCar} 
-          />
-        ))}
+const Cars = () => {
+  const { cars, loading } = useCars();
+
+  const dispatch = useAppDispatch();
+  const query = useAppSelector((state) => state.cars.query);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    dispatch(setQuery(value));
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    
+      <div className="p-4">
+        <h1>Our Inventory</h1>
+        <input
+          type="text"
+          placeholder="Search cars..."
+          className="border p-2 w-full mb-4 rounded"
+          value={query}
+          onChange={handleInputChange}
+        />
+        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mt-4">
+          {cars.map((car) => (
+            <Fragment key={car["car-id"]}>
+              <CarCard car={car} />
+            </Fragment>
+          ))}
+        </section>
       </div>
-    </div>
-    );
-}   
+    
+  );
+};
 
-export default CarsPage;
+export default Cars;

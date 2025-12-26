@@ -8,6 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useAppDispatch } from "@/store/hooks";
+import { setSelectedCar } from "@/store/reducer/CarsReducer";
 
 interface CarProps {
   car: {
@@ -20,10 +22,17 @@ interface CarProps {
   };
 }
 
+
+
 const CarCard = ({ car }: CarProps) => {
+  const dispatch = useAppDispatch();
+  const handleCardClick = () => {
+    alert(`Selected Car ID: ${car["car-id"]}`);
+    dispatch(setSelectedCar(car));
+  };
 
     return (
-    <Card className="overflow-hidden transition-all hover:shadow-md">
+    <Card className="overflow-hidden transition-all hover:shadow-md cursor-pointer" onClick={handleCardClick}>
       {/* Car Image */}
       <div className="aspect-video w-full overflow-hidden bg-muted">
         <img
@@ -57,7 +66,7 @@ const CarCard = ({ car }: CarProps) => {
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full">View Details</Button>
+        <Button className="w-full" onClick={handleCardClick}>View Details</Button>
       </CardFooter>
     </Card>
   );

@@ -17,8 +17,8 @@ const AppHeader = () => {
         <Link to="/cars" className="text-md font-medium text-gray-700">
           Cars
         </Link>
-        <Link to="/about" className="text-md font-medium text-gray-700">
-          About
+        <Link to="/Home" className="text-md font-medium text-gray-700">
+          Home
         </Link>
         <Link to="/contact" className="text-md font-medium text-gray-700">
           Contact
