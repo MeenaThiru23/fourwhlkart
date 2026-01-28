@@ -14,6 +14,10 @@ export const APP_ROUTES = [
     component: () => import("../pages/cars"),
   },
   {
+    path: "/car/:id", 
+    component: () => import("../pages/CarDetails"),
+  },
+  {
     path: "*",
     component: () => import("../pages/PageNotFound"),
   },

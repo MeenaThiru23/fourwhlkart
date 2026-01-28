@@ -1,4 +1,5 @@
 import { Calendar, Gauge, CircleDollarSign } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,9 +27,12 @@ interface CarProps {
 
 const CarCard = ({ car }: CarProps) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const handleCardClick = () => {
-    alert(`Selected Car ID: ${car["car-id"]}`);
+    //alert(`Selected Car ID: ${car["car-id"]}`);
     dispatch(setSelectedCar(car));
+    console.log("Dispatched selected car:", car);
+    navigate(`/car/${car["car-id"]}`);
   };
 
     return (
@@ -66,7 +70,9 @@ const CarCard = ({ car }: CarProps) => {
       </CardContent>
 
       <CardFooter className="p-4 pt-0">
-        <Button className="w-full" onClick={handleCardClick}>View Details</Button>
+        <Button className="w-full" onClick={(e) => {
+          e.stopPropagation();
+          handleCardClick;}}>View Details</Button>
       </CardFooter>
     </Card>
   );

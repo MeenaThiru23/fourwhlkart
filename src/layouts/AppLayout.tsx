@@ -9,7 +9,7 @@ const AppLayout = () => {
                <Routes>
         {APP_ROUTES.map((route) => {
           const Component = lazy(() => route.component());
-          const isProtected = route.protected || false;
+          //const isProtected = route.protected || false;
           return (
             <Route
               key={route.path}

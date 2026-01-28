@@ -10,7 +10,8 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CarCard from "./CarCard";
 import carsData from "@/utils/Cars.json";
-import { useAppSelector } from "@/store/hooks";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { fetchCarsInfo } from "@/store/reducer/CarsReducer";
 
 // 1. TypeScript Interfaces
 interface Car {
@@ -61,12 +62,25 @@ const DataCarousel = ({ cars }: DataCarouselProps) => {
 
 // 3. Main Section with Tabs
 export function CarouselComponent() {
-  // Simulating data split for the two tabs
-  const youMightLike = carsData.slice(0, 8) as Car[];
-const { cars, recentlyViewedIds } = useAppSelector((state) => state.cars);
-const recentlyViewedCars = recentlyViewedIds
-  .map(id => cars.find(c => c["car-id"] === id))
-  .filter((car): car is Car => !!car);
+  
+  const dispatch = useAppDispatch();
+  const { cars, recentlyViewedIds } = useAppSelector((state) => state.cars);
+
+  // Trigger the fetch if the store is empty
+  React.useEffect(() => {
+    if (cars.length === 0) {
+      dispatch(fetchCarsInfo());
+    }
+  }, [dispatch, cars.length]);
+
+  // Use state.cars for "You Might Like" as well to keep data sources consistent
+  // If state.cars isn't loaded yet, fallback to the raw JSON
+  const displayCars = cars.length > 0 ? cars : (carsData as Car[]);
+  const youMightLike = displayCars.slice(0, 8);
+
+  const recentlyViewedCars = recentlyViewedIds
+    .map(id => cars.find(c => c["car-id"] === id))
+    .filter((car): car is Car => !!car);
 
   return (
     <section className="w-full bg-gradient-to-r from-violet-950 to-violet-180 border-y border-primary/10 py-10 my-8">
